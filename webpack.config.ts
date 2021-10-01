@@ -43,6 +43,7 @@ const webpackConfig = (): Configuration => ({
         new HtmlWebpackPlugin({
             // HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles
             template: './public/index.html',
+            favicon: './public/images/favicon.ico',
         }),
         // DefinePlugin allows you to create global constants which can be configured at compile time
         new DefinePlugin({

@@ -1,18 +1,32 @@
+import {createTheme} from '@material-ui/core';
+import {blue, pink} from '@material-ui/core/colors';
 import React from 'react';
-import {Button, IconButton} from '@material-ui/core';
-import {ChevronLeft, Delete} from '@material-ui/icons';
+import TopNavBar from './components/TopNavBar';
+
 import './styles.scss';
 
-const App: React.FC = () => (
-    <div className="wrapper">
-        <h1>React 17 and TypeScript 4 App!🚀</h1>
-        <IconButton>
-            <ChevronLeft />
-        </IconButton>
-        <Button variant="contained" color="primary" startIcon={<Delete />}>
-            Hello World
-        </Button>
-    </div>
-);
+function App() {
+    const darkTheme = createTheme({
+        palette: {
+            type: 'dark',
+            primary: {
+                main: pink[300],
+            },
+            secondary: {
+                main: blue[800],
+            },
+        },
+    });
+    return (
+        <div className="jss1">
+            <TopNavBar
+                open={true}
+                useDefaultTheme={true}
+                toggleTheme={() => darkTheme}
+                handleMenuOpen={null}
+            />
+        </div>
+    );
+}
 
 export default App;
