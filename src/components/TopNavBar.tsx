@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         appBarShift: {
             marginLeft: 250,
-            width: 'calc(100% - 250px)',
+            width: '100%', // 'calc(100% - 250px)',
             transition: theme.transitions.create(['width', 'margin'], {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.enteringScreen,
@@ -66,14 +66,21 @@ const TopNavBar: FC<TopNavBarProps> = ({
 }): ReactElement => {
     const classes = useStyles();
     return (
-        <AppBar>
-            <Toolbar className="toolbar">
-                <div className={classes.toolbar}>
+        <AppBar
+            elevation={0}
+            position="fixed"
+            className={clsx(classes.appBar, {
+                [classes.appBarShift]: open,
+            })}>
+            <Toolbar className={classes.toolbar}>
+                <div className={classes.title}>
                     <IconButton
                         color="inherit"
                         aria-label="open menu"
                         onClick={handleMenuOpen}
-                        className={clsx({marginRight: 36}, {hide: open})}>
+                        className={clsx(classes.menuButton, {
+                            [classes.hide]: open,
+                        })}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
